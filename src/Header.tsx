@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { AuthorOrcid } from './AuthorOrcid'
+import { Author } from './Author'
 import { Metadata } from './types/metadata'
 
 export const Header: React.FC<{ metadata: Metadata }> = ({ metadata }) => (
@@ -9,11 +9,10 @@ export const Header: React.FC<{ metadata: Metadata }> = ({ metadata }) => (
 
     <Authors>
       {metadata.authors.map((author, index) => (
-        <Author key={author.id}>
+        <AuthorContainer key={author.id}>
           {index > 0 && <span>, </span>}
-          <span>{author.name}</span>
-          {author.orcid && <AuthorOrcid id={author.orcid} />}
-        </Author>
+          <Author author={author} />
+        </AuthorContainer>
       ))}
     </Authors>
   </Container>
@@ -30,6 +29,6 @@ const Title = styled.h1`
 
 const Authors = styled.div``
 
-const Author = styled.span`
+const AuthorContainer = styled.span`
   white-space: nowrap;
 `

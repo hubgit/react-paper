@@ -4,6 +4,7 @@ import styled from 'styled-components'
 export const AuthorOrcid: React.FC<{ id: string }> = ({ id }) => (
   <OrcidLink href={buildOrcidURL(id)} target={'_orcid'}>
     <OrcidIcon />
+    <Orcid>{id}</Orcid>
   </OrcidLink>
 )
 
@@ -23,11 +24,21 @@ const OrcidIcon: React.FC = () => (
   </svg>
 )
 
+const Orcid = styled.span`
+  display: inline-block;
+  margin-left: 0.5ch;
+`
+
 const OrcidLink = styled.a`
   margin-left: 0.25ch;
-  
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   svg {
-      height: 1em;
-      width: 1em;
+    height: 1em;
+    width: 1em;
   }
 `
