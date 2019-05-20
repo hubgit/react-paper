@@ -6,11 +6,11 @@ import { Metadata } from './types/metadata'
 export const Footer: React.FC<{ metadata: Metadata }> = ({ metadata }) => (
   <Container>
     {metadata.repository && (
-      <Section>
+      <PlainSection>
         <SourceLink href={repositoryURL(metadata.repository)} target={'_blank'}>
           View Source
         </SourceLink>
-      </Section>
+      </PlainSection>
     )}
 
     {metadata.affiliations && (
@@ -91,12 +91,22 @@ const Container = styled.footer`
   font-size: 80%;
 `
 
-const Heading = styled.div`
+const Heading = styled.summary`
   font-weight: 200;
   font-size: 150%;
+  cursor: pointer;
+  
+  &::-webkit-details-marker {
+    opacity: 0.1;
+  }
 `
 
-const Section = styled.div`
+const PlainSection = styled.div`
+  margin-top: 8px;
+  text-align: right;
+`
+
+const Section = styled.details.attrs({ open: true })`
   margin-top: 8px;
   text-align: right;
 `
