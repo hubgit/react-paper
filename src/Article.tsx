@@ -15,7 +15,7 @@ export const Article = styled.article`
 
   > header {
     grid-area: header;
-    font-family: ${props => props.theme.header.font};
+    font-family: ${(props) => props.theme.header.font};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,10 +40,10 @@ export const Article = styled.article`
     grid-area: sidebar;
     padding: 16px;
     min-width: 20em;
-    font-family: ${props => props.theme.footer.font};
+    font-family: ${(props) => props.theme.footer.font};
   }
 
   h1 {
-    font-family: ${props => props.theme.heading.font};
+    font-family: ${(props) => props.theme.heading.font};
   }
 `

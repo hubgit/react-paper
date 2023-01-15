@@ -11,10 +11,9 @@ interface BibliographyContextValue {
   labels?: { [key: string]: string }
 }
 
-export const BibliographyContext = React.createContext<
-  BibliographyContextValue
+export const BibliographyContext =
+  React.createContext<BibliographyContextValue>({} as BibliographyContextValue)
   // eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion
->({} as BibliographyContextValue)
 
 interface Citation {
   keys: string[]
@@ -41,7 +40,7 @@ export const BibliographyProvider: React.FC<{
   React.useEffect(() => {
     if (citations.length) {
       createProcessor(citationStyle, references)
-        .then(processor => {
+        .then((processor) => {
           const { bibliographyItems, labels } = processCitations(
             citations,
             processor
@@ -51,7 +50,7 @@ export const BibliographyProvider: React.FC<{
           setBibliographyItems(bibliographyItems)
           setCitedKeys(Object.keys(bibliographyItems))
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(error)
           setError(error)
         })
@@ -100,7 +99,7 @@ const createProcessor = async (
 
   return new CSL.Engine(
     {
-      retrieveLocale: id => {
+      retrieveLocale: (id) => {
         if (!localeMap.has(id)) {
           throw new Error(`Locale ${id} not found`)
         }
@@ -122,15 +121,11 @@ const createProcessor = async (
 
             case 'title':
               if (params.itemData.URL) {
-                return `${prePunct}<a href="${
-                  params.itemData.URL
-                }" target="blank">${str}</a>${postPunct}`
+                return `${prePunct}<a href="${params.itemData.URL}" target="blank">${str}</a>${postPunct}`
               }
 
               if (params.itemData.DOI) {
-                return `${prePunct}<a href="https://doi.org/${
-                  params.itemData.DOI
-                }" target="blank">${str}</a>${postPunct}`
+                return `${prePunct}<a href="https://doi.org/${params.itemData.DOI}" target="blank">${str}</a>${postPunct}`
               }
           }
         }
@@ -146,8 +141,8 @@ const processCitations = (
   citations: Citation[],
   processor: CiteProc.Engine
 ) => {
-  const citationsList = citations.map(citation => ({
-    citationItems: citation.keys.map(id => ({ id })),
+  const citationsList = citations.map((citation) => ({
+    citationItems: citation.keys.map((id) => ({ id })),
     properties: {
       noteIndex: 0,
     },
@@ -179,7 +174,7 @@ const processCitations = (
 const fetchLocale = (id: string): Promise<string> =>
   fetch(
     `https://raw.githubusercontent.com/citation-style-language/locales/master/locales-${id}.xml`
-  ).then(response => response.text())
+  ).then((response) => response.text())
 
 const fetchCitationStyle = async (id: string): Promise<string> => {
   const response = await fetch(

@@ -5,8 +5,8 @@ import { Affiliation, Metadata } from './types/metadata'
 export const TraditionalHeader: React.FC<{ metadata: Metadata }> = ({
   metadata,
 }) => {
-  const authorsAffiliations = metadata.authors.map(author => {
-    return metadata.affiliations.filter(affiliation => {
+  const authorsAffiliations = metadata.authors.map((author) => {
+    return metadata.affiliations.filter((affiliation) => {
       // return affiliation.members.includes(author)
 
       for (const member of affiliation.members) {
@@ -19,8 +19,8 @@ export const TraditionalHeader: React.FC<{ metadata: Metadata }> = ({
 
   const sortedAffiliations: Affiliation[] = []
 
-  authorsAffiliations.forEach(affiliations => {
-    affiliations.forEach(affiliation => {
+  authorsAffiliations.forEach((affiliations) => {
+    affiliations.forEach((affiliation) => {
       sortedAffiliations.push(affiliation)
     })
   })

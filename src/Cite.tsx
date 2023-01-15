@@ -13,12 +13,8 @@ export const Cite: React.FC<{ items: string }> = ({ items }) => {
   const [label, setLabel] = React.useState<string>()
   const [addedCitation, setAddedCitation] = React.useState(false)
 
-  const {
-    addCitation,
-    labels,
-    bibliographyItems,
-    citedKeys,
-  } = React.useContext(BibliographyContext)
+  const { addCitation, labels, bibliographyItems, citedKeys } =
+    React.useContext(BibliographyContext)
 
   React.useEffect(() => {
     if (bibliographyItems && citedKeys && labels) {
@@ -26,7 +22,7 @@ export const Cite: React.FC<{ items: string }> = ({ items }) => {
       setCitedItems(
         keys
           .sort((a, b) => citedKeys.indexOf(a) - citedKeys.indexOf(b))
-          .map(key => bibliographyItems[key])
+          .map((key) => bibliographyItems[key])
       )
     }
   }, [bibliographyItems, citedKeys, labels, keys])
@@ -63,7 +59,7 @@ export const Cite: React.FC<{ items: string }> = ({ items }) => {
             {({ ref, style, placement, arrowProps }) => (
               <div ref={ref} style={style} data-placement={placement}>
                 <CitedItems>
-                  {citedItems.map(citedItem => (
+                  {citedItems.map((citedItem) => (
                     <BibliographyItem
                       key={citedItem}
                       dangerouslySetInnerHTML={{

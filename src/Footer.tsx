@@ -21,7 +21,7 @@ export const Footer: React.FC<{ metadata: Metadata }> = ({ metadata }) => (
             <ItemName>{affiliation.name}</ItemName>
             <ItemName>{affiliation.department}</ItemName>
             <Authors>
-              {affiliation.members.map(author => (
+              {affiliation.members.map((author) => (
                 <AuthorName key={author.id}>{author.name}</AuthorName>
               ))}
             </Authors>
@@ -36,11 +36,11 @@ export const Footer: React.FC<{ metadata: Metadata }> = ({ metadata }) => (
         {metadata.funders.map((funder, index) => (
           <Item key={funder.name} id={`funder-${index}`}>
             <ItemName>{funder.name}</ItemName>
-            {funder.awards.map(award => (
+            {funder.awards.map((award) => (
               <Award key={award.name}>
                 <ItemName>{award.name}</ItemName>
                 <Authors>
-                  {award.recipients.map(author => (
+                  {award.recipients.map((author) => (
                     <AuthorName key={author.id}>{author.name}</AuthorName>
                   ))}
                 </Authors>
@@ -58,7 +58,7 @@ export const Footer: React.FC<{ metadata: Metadata }> = ({ metadata }) => (
           <Item key={contribution.name} id={`contribution-${index}`}>
             <ItemName>{contribution.name}</ItemName>
             <Authors>
-              {contribution.contributors.map(author => (
+              {contribution.contributors.map((author) => (
                 <AuthorName key={author.id}>{author.name}</AuthorName>
               ))}
             </Authors>
@@ -95,7 +95,7 @@ const Heading = styled.summary`
   font-weight: 200;
   font-size: 150%;
   cursor: pointer;
-  
+
   &::-webkit-details-marker {
     opacity: 0.1;
   }

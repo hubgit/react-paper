@@ -7,7 +7,7 @@ export const Equation: React.FC<{ tex: string }> = ({ tex }) => {
 
   React.useEffect(() => {
     if (outputRef.current) {
-      renderEquation(tex, outputRef.current).catch(error => {
+      renderEquation(tex, outputRef.current).catch((error) => {
         console.error(error)
       })
     }
@@ -21,7 +21,7 @@ export const InlineEquation: React.FC<{ tex: string }> = ({ tex }) => {
 
   React.useEffect(() => {
     if (outputRef.current) {
-      renderEquation(tex, outputRef.current).catch(error => {
+      renderEquation(tex, outputRef.current).catch((error) => {
         console.error(error)
       })
     }

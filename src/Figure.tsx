@@ -6,7 +6,7 @@ export const Figure: React.FC<{
   label?: string
   title?: string
   caption?: string
-}> = props => (
+}> = (props) => (
   <Container id={props.id}>
     {props.children}
     <Caption>
@@ -38,5 +38,5 @@ const Title = styled.span`
 `
 
 const Caption = styled.figcaption`
-  font-family: ${props => props.theme.figure.font};
+  font-family: ${(props) => props.theme.figure.font};
 `
