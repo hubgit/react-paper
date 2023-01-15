@@ -55,7 +55,7 @@ export const Cite: React.FC<{ items: string }> = ({ items }) => {
       {isOpen &&
         citedItems &&
         ReactDOM.createPortal(
-          <Popper placement={'right'} positionFixed={true}>
+          <Popper placement={'right'} strategy="fixed">
             {({ ref, style, placement, arrowProps }) => (
               <div ref={ref} style={style} data-placement={placement}>
                 <CitedItems>

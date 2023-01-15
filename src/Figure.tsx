@@ -6,6 +6,7 @@ export const Figure: React.FC<{
   label?: string
   title?: string
   caption?: string
+  children: React.ReactNode
 }> = (props) => (
   <Container id={props.id}>
     {props.children}

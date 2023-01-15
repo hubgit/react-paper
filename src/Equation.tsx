@@ -33,9 +33,9 @@ export const InlineEquation: React.FC<{ tex: string }> = ({ tex }) => {
 const renderEquation = async (
   tex: string,
   container: HTMLElement,
-  displayMode: boolean = false
+  displayMode = false
 ) => {
   await import('katex/dist/katex.css')
-  const { render } = await import('katex')
-  render(tex, container, { displayMode })
+  const { default: katex } = await import('katex')
+  katex.render(tex, container, { displayMode })
 }

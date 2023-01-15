@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import * as CiteProc from 'citeproc'
 import * as React from 'react'
 import { ErrorMessage } from './ErrorMessage'
@@ -13,7 +11,6 @@ interface BibliographyContextValue {
 
 export const BibliographyContext =
   React.createContext<BibliographyContextValue>({} as BibliographyContextValue)
-  // eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion
 
 interface Citation {
   keys: string[]
@@ -26,6 +23,7 @@ interface Reference {
 export const BibliographyProvider: React.FC<{
   references?: Reference[]
   citationStyle?: string
+  children: React.ReactNode
 }> = ({ references = [], citationStyle = 'nature', children }) => {
   const [bibliographyItems, setBibliographyItems] = React.useState<{
     [key: string]: string

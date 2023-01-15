@@ -21,7 +21,7 @@ export const Author: React.FC<{ author: AuthorData }> = ({ author }) => {
 
       {isOpen &&
         ReactDOM.createPortal(
-          <Popper placement={'bottom'} positionFixed={true}>
+          <Popper placement={'bottom'} strategy="fixed">
             {({ ref, style, placement, arrowProps }) => (
               <div ref={ref} style={style} data-placement={placement}>
                 <AuthorPopper>
